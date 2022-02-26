@@ -1,5 +1,5 @@
 # Ganime
-Ganime - Google but for Anime. Do you love anime? Ever wonder what anime your friends are always talking about? Say no more, with Ganime you get all the necessary information about any Anime in the palm of your hands. Just type the name of you anime you are looking for and thats it!
+Ganime - Google but for Anime. Do you love anime? Ever wonder what anime your friends are always talking about? Say no more, with Ganime you get all the necessary information about any anime in the palm of your hands. Just type the name of you anime you are looking for and thats it!
 
 
 This app was made as way for me to learn about the following:
