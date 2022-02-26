@@ -13,4 +13,4 @@ This app was made as way for me to learn about the following:
 
 
 
-![Simulator Screen Recording - iPhone 12 - 2022-02-26 at 10 15 44](https://user-images.githubusercontent.com/40813000/155850686-bd2e46be-2d0d-4752-92b5-e52e6b03d891.gif)
+![Simulator Screen Recording - iPhone 12 - 2022-02-26 at 10 15 44](https://user-images.githubusercontent.com/40813000/155850705-dc486598-94de-4f41-9791-e9aff88c348a.gif)
