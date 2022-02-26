@@ -3,6 +3,7 @@ Ganime - Google but for Anime. Do you love anime? Ever wonder what anime your fr
 
 
 This app was made as way for me to learn about the following:
+
 -RESTFUL APIs: Learned what they are and how to use them.
 
 -MVC Architechture: Learned a better way of organizing and writing code
