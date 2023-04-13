@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A507AA029E847BB00EEBA3C /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A507A9F29E847BB00EEBA3C /* FavoriteViewController.swift */; };
 		DE45768B27B49D380060E119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45768A27B49D380060E119 /* AppDelegate.swift */; };
 		DE45768D27B49D380060E119 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45768C27B49D380060E119 /* SceneDelegate.swift */; };
 		DE45768F27B49D380060E119 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45768E27B49D380060E119 /* DataManager.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A507A9F29E847BB00EEBA3C /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		DE45768727B49D380060E119 /* Ganime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ganime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE45768A27B49D380060E119 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE45768C27B49D380060E119 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				DE4576A127B4A2210060E119 /* SearchViewController.swift */,
 				DE4576A327B865F50060E119 /* DisplayViewController.swift */,
+				9A507A9F29E847BB00EEBA3C /* FavoriteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				DE4576A827B870D00060E119 /* AnimeData.swift in Sources */,
 				DE4576A227B4A2210060E119 /* SearchViewController.swift in Sources */,
 				DE4576A627B86E4D0060E119 /* AnimeModel.swift in Sources */,
+				9A507AA029E847BB00EEBA3C /* FavoriteViewController.swift in Sources */,
 				DE45768D27B49D380060E119 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

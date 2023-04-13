@@ -27,8 +27,20 @@ class SearchViewController: UIViewController {
             let destinationVC = segue.destination as! DisplayViewController
             destinationVC.animeModel = animeModel
         }
+        
+        if segue.identifier == "favorite" {
+            guard let vc = segue.destination as? FavoriteViewController else { return }
+                
+        }
     }
+    
+    @IBAction func segueButtonPressed(_ sender: Any) {
+            performSegue(withIdentifier: "favorite", sender: self)
+        }
+    
 }
+
+
 
 //MARK: - DataManagerDelegate (returns Data for URL)
 extension SearchViewController: DataManagerDelegate {
