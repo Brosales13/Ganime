@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DisplayViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -14,12 +15,11 @@ class DisplayViewController: UIViewController {
     @IBOutlet weak var ageRating: UILabel!
     @IBOutlet weak var statusRating: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    var image: UIImage = UIImage(named: "Ganime")!
     
     
     var dataManager = DataManager()
     var animeModel: AnimeModel?
-   
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,23 @@ class DisplayViewController: UIViewController {
         statusRating.text = animeModel?.status
         if let url = URL(string: animeModel!.animeImage) {
             posterImageView.load(url: url)
+        }
+    }
+    
+    @IBAction func saveSeries(_ sender: UIButton) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let jpegImageData = image.jpegData(compressionQuality: 1.0)
+        let data = NSEntityDescription.insertNewObject(forEntityName: "Series", into: context)
+        data.setValue(titleLabel.text, forKey: "name")
+        data.setValue(jpegImageData, forKey: "image")
+        
+        do {
+            try context.save()
+            print("SAVED")
+        } catch {
+            print("Could not save. \(error)")
         }
     }
 }
