@@ -11,7 +11,8 @@ import CoreData
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var table: UITableView!
-    var models: [basicSeriesModel] = []
+    var models: [NSManagedObject] = []
+    let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,38 +23,18 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func fetchFavoriteSeries() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            let context = appDelegate.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<Series>(entityName: "Series")
-            
-            do {
-                let results = try context.fetch(fetchRequest)
+        DispatchQueue.main.async {
+            self.context.performAndWait {
+                // Setup a fetchRequest
+                let fetchRequest = Series.fetchRequest()
                 
-                for result in results {
-                    if let nameValue = result.name {
-                        if let imageValue = result.image {
-                            let uiImage: UIImage = UIImage(data: imageValue) ?? UIImage(named: "Ganime")!
-                            models.append(basicSeriesModel(name: nameValue, image: uiImage))
-                        }
-                    }
-                }
-            } catch {
-                print("No Info")
+                //Update money array with the new data
+                self.models = try! self.context.fetch(fetchRequest)
             }
+            self.table.reloadData()
         }
     }
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let curSeries = models[indexPath.row]
-            container.viewContext.delete(curSeries)
-            commits.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-
-            saveContext()
-        }
-    }
-    */
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -63,9 +44,27 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier") as? CustomCell {
             cell.configureCell(series: models[indexPath.row])
             return cell
-              }
+            }
            return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            let objectToRemove = self.models[indexPath.row]
+            self.context.delete(objectToRemove)
+            models.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+           
+            do {
+                try self.context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 100
