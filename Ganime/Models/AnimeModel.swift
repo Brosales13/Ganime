@@ -1,6 +1,7 @@
 
 //  Created by Brian Rosales on 2/12/22.
 import Foundation
+import UIKit
 
 struct AnimeModel {
     let animeTitle: String
@@ -11,3 +12,7 @@ struct AnimeModel {
     let animeImage: String
 }
 
+struct basicSeriesModel {
+    let name: String
+    let image: UIImage
+}

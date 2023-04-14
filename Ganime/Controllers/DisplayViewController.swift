@@ -15,8 +15,7 @@ class DisplayViewController: UIViewController {
     @IBOutlet weak var ageRating: UILabel!
     @IBOutlet weak var statusRating: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
-    var image: UIImage = UIImage(named: "Ganime")!
-    
+    var newImage: UIImage = UIImage(named: "Ganime")!
     
     var dataManager = DataManager()
     var animeModel: AnimeModel?
@@ -30,6 +29,7 @@ class DisplayViewController: UIViewController {
         statusRating.text = animeModel?.status
         if let url = URL(string: animeModel!.animeImage) {
             posterImageView.load(url: url)
+            grabImage(url: url)
         }
     }
     
@@ -37,16 +37,28 @@ class DisplayViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        let jpegImageData = image.jpegData(compressionQuality: 1.0)
+        let jpegImageData = newImage.jpegData(compressionQuality: 1.0)
         let data = NSEntityDescription.insertNewObject(forEntityName: "Series", into: context)
         data.setValue(titleLabel.text, forKey: "name")
         data.setValue(jpegImageData, forKey: "image")
         
         do {
             try context.save()
-            print("SAVED")
+            print("Saved\t \(titleLabel.text)")
         } catch {
             print("Could not save. \(error)")
+        }
+    }
+
+    func grabImage(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.newImage = image
+                    }
+                }
+            }
         }
     }
 }
