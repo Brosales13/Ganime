@@ -20,13 +20,8 @@ class DisplayViewController: UIViewController {
     var dataManager = DataManager()
     var animeModel: AnimeModel?
     
-    init(selectedAnime: AnimeModel) {
-        self.animeModel = selectedAnime
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setup(seriesInfo: AnimeModel) {
+        self.animeModel = seriesInfo
     }
     
     override func viewDidLoad() {

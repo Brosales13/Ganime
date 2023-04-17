@@ -29,6 +29,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func fetchFavoriteSeries() {
         DispatchQueue.main.async {
             self.context.performAndWait {
@@ -45,9 +49,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     func didUpdateAnime(animeUpdated: AnimeModel) {
         DispatchQueue.main.async {
             self.animeModel = animeUpdated
-            let vc = DisplayViewController(selectedAnime: self.animeModel ?? AnimeModel(animeTitle: "N/A", synopsis: "N/A", status: "N/A", rating: "N/A", ageRating: "N/A", animeImage: "N/A"))
-            self.present(vc, animated: true)
-            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let displayViewController = storyboard.instantiateViewController(withIdentifier: "display_controller") as! DisplayViewController
+            displayViewController.setup(seriesInfo: self.animeModel!)
+            self.present(displayViewController, animated: true, completion: nil)
+
         }
     }
     

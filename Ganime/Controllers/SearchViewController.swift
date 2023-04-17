@@ -11,7 +11,6 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     
-    @IBOutlet weak var navigationTitle: UINavigationBar!
     var animeTitle = ""
     var dataManager = DataManager()
     var animeModel: AnimeModel?
@@ -39,7 +38,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func segueButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let favoriteViewController = storyboard.instantiateViewController(withIdentifier: "favorite_controller")
+        let favoriteViewController = storyboard.instantiateViewController(withIdentifier: "favorite_controller") as! FavoriteViewController
         self.present(favoriteViewController, animated: true, completion: nil)
     }
 }
@@ -51,8 +50,10 @@ extension SearchViewController: DataManagerDelegate {
     func didUpdateAnime(animeUpdated: AnimeModel) {
         DispatchQueue.main.async {
             self.animeModel = animeUpdated
-            let vc = DisplayViewController(selectedAnime: self.animeModel ?? AnimeModel(animeTitle: "N/A", synopsis: "N/A", status: "N/A", rating: "N/A", ageRating: "N/A", animeImage: "N/A"))
-            self.present(vc, animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let displayViewController = storyboard.instantiateViewController(withIdentifier: "display_controller") as! DisplayViewController
+            displayViewController.setup(seriesInfo: self.animeModel!)
+            self.present(displayViewController, animated: true, completion: nil)
             
         }
     }

@@ -44,7 +44,7 @@ struct DataManager {
                 }
                 if let safeData = data {
                     
-                    if let animeUpdated = self.parseJSON(currentData: safeData){
+                    if let animeUpdated = self.parseJSON(currentData: safeData) {
                         self.delegate?.didUpdateAnime(animeUpdated: animeUpdated)
                     }
                 }
@@ -65,7 +65,6 @@ struct DataManager {
             let poster = decodedData.data![0].attributes!.posterImage!.small!
             
             let animeUpdated = AnimeModel(animeTitle: name, synopsis: summary, status: status, rating: score, ageRating: age, animeImage: poster)
-            print(animeUpdated)
             return animeUpdated
         } catch {
             self.delegate?.didFailWithError(error: error)
