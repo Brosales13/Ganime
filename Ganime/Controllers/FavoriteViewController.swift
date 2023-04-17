@@ -8,18 +8,25 @@
 import UIKit
 import CoreData
 
-class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataManagerDelegate {
     
     @IBOutlet var table: UITableView!
     var models: [NSManagedObject] = []
     let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
     
+    var dataManager = FavoriteViewDataManager()
+    var animeModel: AnimeModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFavoriteSeries()
-        table.delegate = self
         table.dataSource = self
-        table.reloadData()
+        table.delegate = self
+        
+        fetchFavoriteSeries()
+        title = "Favorite Anime"
+        dataManager.delegate = self
+        
+        
     }
     
     func fetchFavoriteSeries() {
@@ -35,6 +42,27 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func didUpdateAnime(animeUpdated: AnimeModel) {
+        DispatchQueue.main.async {
+            self.animeModel = animeUpdated
+            let vc = DisplayViewController(selectedAnime: self.animeModel ?? AnimeModel(animeTitle: "N/A", synopsis: "N/A", status: "N/A", rating: "N/A", ageRating: "N/A", animeImage: "N/A"))
+            self.present(vc, animated: true)
+            
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       tableView.deselectRow(at: indexPath, animated: true)
+        let animeTitle = models[indexPath.row].value(forKey: "name") as! String
+        //When a row is selected we will grab the name and call dataManager to grab the info once thats done we will push it DisplayController just like SearchViewController
+        dataManager.reformatTitle(oldFormat: animeTitle)
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count

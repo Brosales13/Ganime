@@ -1,14 +1,12 @@
-
-//  Created by Brian Rosales on 2/9/22.
+//
+//  FavoriteViewDataManager.swift
+//  Ganime
+//
+//  Created by Brian Rosales on 4/14/23.
 //
 
-import UIKit
-protocol DataManagerDelegate {
-    func didUpdateAnime(animeUpdated: AnimeModel)
-    func didFailWithError(error: Error)
-}
-
-struct DataManager {
+import Foundation
+struct FavoriteViewDataManager {
     let baseURL = "https://kitsu.io/api/edge/anime?filter[text]="
     var delegate: DataManagerDelegate?
     
@@ -73,4 +71,3 @@ struct DataManager {
         }
       }
     }
-

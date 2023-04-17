@@ -12,9 +12,9 @@
         <!--DisplayViewController-->
         <scene sceneID="1JW-x0-6hm">
             <objects>
-                <viewController title="DisplayViewController" id="ebN-Tc-IJf" customClass="DisplayViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="display_controller" title="DisplayViewController" id="ebN-Tc-IJf" customClass="DisplayViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7y1-Or-RVq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wx7-bf-V03">
@@ -164,7 +164,7 @@
         <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main_view" id="BYZ-38-t0r" customClass="SearchViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,8 +235,6 @@
                     </view>
                     <connections>
                         <outlet property="searchTextField" destination="9Kl-Lx-aoM" id="1wm-xp-ci8"/>
-                        <segue destination="ebN-Tc-IJf" kind="presentation" identifier="goToResult" id="Cg5-Dv-2PD"/>
-                        <segue destination="kFg-3Y-bDY" kind="presentation" identifier="favorite" id="vTJ-th-j87"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -246,17 +244,24 @@
         <!--Favorite View Controller-->
         <scene sceneID="MxJ-rt-QWK">
             <objects>
-                <viewController id="nbl-Ie-pXL" customClass="FavoriteViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favorite_controller" id="nbl-Ie-pXL" customClass="FavoriteViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0h4-vW-gB8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a0G-7k-gXO">
-                                <rect key="frame" x="0.0" y="56" width="414" height="781"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="765"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="dpl-v0-p1s">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <items>
+                                        <navigationItem title="Favorite Series" id="Epw-ls-r80"/>
+                                    </items>
+                                </navigationBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CustomCellIdentifier" id="Q7O-fh-ydr" customClass="CustomCell" customModule="Ganime" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="94" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q7O-fh-ydr" id="Geo-5T-ozV">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -316,25 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFF-Da-AiL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.7246376811595" y="946.875"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="KSA-nD-9qD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kFg-3Y-bDY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GdB-Tv-J8r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nbl-Ie-pXL" kind="relationship" relationship="rootViewController" id="mfu-0z-1yE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pnm-hR-YxL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="946.875"/>
+            <point key="canvasLocation" x="552" y="881"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
