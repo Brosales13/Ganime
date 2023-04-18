@@ -24,27 +24,6 @@ class DisplayViewController: UIViewController {
     var dataManager = DataManager()
     var animeModel: AnimeModel?
     
-    func setup(seriesInfo: AnimeModel) {
-        self.animeModel = seriesInfo
-    }
-    
-    func setNavigationBar() {
-        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
-        navigationBar.backgroundColor = .black
-        view.addSubview(navigationBar)
-        customNavigationItem = UINavigationItem()
-        customNavigationItem.title = "Ganime"
-        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(done))
-        customNavigationItem.leftBarButtonItem = leftBarButton
-        navigationBar.items = [customNavigationItem]
-        self.view.addSubview(navigationBar)
-        
-    }
-    
-    @objc func done() {
-        dismiss(animated: true, completion: nil)
-        print("done")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBar()
@@ -58,7 +37,7 @@ class DisplayViewController: UIViewController {
             grabImage(url: url)
         }
     }
-
+    
     @IBAction func saveSeries(_ sender: UIButton) {
         do {
                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -91,6 +70,29 @@ class DisplayViewController: UIViewController {
             }
         
     }
+    
+    func setup(seriesInfo: AnimeModel) {
+        self.animeModel = seriesInfo
+    }
+    
+    func setNavigationBar() {
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+        navigationBar.backgroundColor = .black
+        view.addSubview(navigationBar)
+        customNavigationItem = UINavigationItem()
+        customNavigationItem.title = "Ganime"
+        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .plain, target: self, action: #selector(done))
+        customNavigationItem.leftBarButtonItem = leftBarButton
+        navigationBar.items = [customNavigationItem]
+        self.view.addSubview(navigationBar)
+        
+    }
+    
+    @objc func done() {
+        dismiss(animated: true, completion: nil)
+        print("done")
+    }
+
 
     func grabImage(url: URL) {
         DispatchQueue.global().async { [weak self] in

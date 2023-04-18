@@ -21,29 +21,12 @@ class SearchViewController: UIViewController {
         dataManager.delegate = self
     }
     
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToResult"{
-            let destinationVC = segue.destination as! DisplayViewController
-            //this is what ties info to displayViewController
-            destinationVC.animeModel = animeModel
-        }
-        
-        if segue.identifier == "favorite" {
-            guard let vc = segue.destination as? FavoriteViewController else { return }
-                
-        }
-    }
-     */
-    
-    @IBAction func segueButtonPressed(_ sender: Any) {
+    @IBAction func favoriteButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let favoriteViewController = storyboard.instantiateViewController(withIdentifier: "favorite_controller") as! FavoriteViewController
         self.present(favoriteViewController, animated: true, completion: nil)
     }
 }
-
-
 
 //MARK: - DataManagerDelegate (returns Data for URL)
 extension SearchViewController: DataManagerDelegate {
@@ -66,27 +49,30 @@ extension SearchViewController: DataManagerDelegate {
 //MARK: - UITextFieldDelegate (all about the search bar)
 extension SearchViewController: UITextFieldDelegate {
     
-    @IBAction func searchPressed(_ sender: UIButton) {
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
-        print(self.searchTextField.text!)
+        print(searchTextField.text!)
     }
     
+    //The text field calls this method whenever the user taps the return button.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
         print(searchTextField.text!)
         return true
     }
     
+    //Asks the delegate whether to stop editing in the specified text field.
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true
-        }else{
+        } else {
             textField.placeholder = "Name of Anime"
             return false
         }
     }
+    //Tells the delegate when editing stops for the specified text field.
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let animeTitle = textField.text{
+        if let animeTitle = textField.text {
             dataManager.reformatTitle(oldFormat: animeTitle)
         }
         searchTextField.text = ""
