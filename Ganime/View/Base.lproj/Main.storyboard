@@ -255,12 +255,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a0G-7k-gXO">
                                 <rect key="frame" x="0.0" y="48" width="414" height="765"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="dpl-v0-p1s">
+                                <navigationBar key="tableHeaderView" contentMode="scaleToFill" translucent="NO" id="dpl-v0-p1s">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <items>
                                         <navigationItem title="Favorite Series" id="Epw-ls-r80">
-                                            <barButtonItem key="leftBarButtonItem" image="xmark.circle.fill" catalog="system" id="d8R-0y-eKb">
+                                            <barButtonItem key="leftBarButtonItem" image="xmark.circle" catalog="system" id="d8R-0y-eKb">
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="backButton:" destination="nbl-Ie-pXL" id="7FJ-Az-jJV"/>
@@ -338,7 +339,7 @@
     <resources>
         <image name="Ganime" width="903" height="644"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
