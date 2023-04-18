@@ -15,6 +15,7 @@ class DisplayViewController: UIViewController {
     @IBOutlet weak var ageRating: UILabel!
     @IBOutlet weak var statusRating: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    
     var newImage: UIImage = UIImage(named: "Ganime")!
     private var navigationBar: UINavigationBar!
     private var customNavigationItem: UINavigationItem!
@@ -44,6 +45,7 @@ class DisplayViewController: UIViewController {
                 let request : NSFetchRequest<Series> = Series.fetchRequest()
             request.predicate = NSPredicate(format: "name == %@", titleLabel.text!)
                 let numberOfRecords = try context.count(for: request)
+            
                 if numberOfRecords == 0 {
                     let jpegImageData = newImage.jpegData(compressionQuality: 1.0)
                     let data = NSEntityDescription.insertNewObject(forEntityName: "Series", into: context)
