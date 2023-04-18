@@ -104,9 +104,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svf-MN-M1n">
-                                <rect key="frame" x="143" y="716" width="128" height="34.5"/>
+                                <rect key="frame" x="143" y="716" width="128" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button">
+                                <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
@@ -203,11 +203,15 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FS-ZA-oih">
-                                <rect key="frame" x="164" y="700" width="85" height="30"/>
+                                <rect key="frame" x="119" y="684" width="176" height="43"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Favorite">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
-                                    <color key="baseForegroundColor" name="AccentColor"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Favorite Series" cornerStyle="small">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="strokeColor" systemColor="systemGray5Color"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="segueButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E21-CF-r1l"/>
@@ -217,19 +221,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.97215849160000001" green="0.97039943930000006" blue="0.94734257460000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4FS-ZA-oih" secondAttribute="trailing" constant="165" id="2V2-Ke-zgG"/>
                             <constraint firstAttribute="bottom" secondItem="Z0q-NM-Slu" secondAttribute="bottom" constant="355" id="2Xg-bN-t7U"/>
                             <constraint firstItem="9Kl-Lx-aoM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ul-d1-2hI"/>
                             <constraint firstItem="9Kl-Lx-aoM" firstAttribute="top" secondItem="yl5-pm-HGg" secondAttribute="bottom" constant="8" symbolic="YES" id="Io0-EP-E5L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9Kl-Lx-aoM" secondAttribute="trailing" id="Lpt-fM-Rro"/>
+                            <constraint firstItem="4FS-ZA-oih" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="119" id="OhJ-Xc-dix"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yl5-pm-HGg" secondAttribute="trailing" constant="32" id="R6G-7I-EGI"/>
-                            <constraint firstAttribute="bottom" secondItem="4FS-ZA-oih" secondAttribute="bottom" constant="166" id="Yqw-on-plQ"/>
                             <constraint firstItem="yl5-pm-HGg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="28" id="c8Z-lw-NTe"/>
                             <constraint firstItem="Z0q-NM-Slu" firstAttribute="top" secondItem="9Kl-Lx-aoM" secondAttribute="bottom" constant="64" id="eto-bt-JY3"/>
-                            <constraint firstItem="4FS-ZA-oih" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="164" id="iyF-ql-Vkr"/>
                             <constraint firstItem="Z0q-NM-Slu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="144" id="jbm-mn-iNl"/>
                             <constraint firstItem="yl5-pm-HGg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="qtY-1Z-us7"/>
+                            <constraint firstAttribute="trailing" secondItem="4FS-ZA-oih" secondAttribute="trailing" constant="119" id="sfB-jP-NEQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z0q-NM-Slu" secondAttribute="trailing" constant="144" id="yRW-K8-1Di"/>
+                            <constraint firstAttribute="bottom" secondItem="4FS-ZA-oih" secondAttribute="bottom" constant="169" id="yhW-Jv-Y5W"/>
                         </constraints>
                     </view>
                     <connections>
@@ -256,7 +260,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <items>
                                         <navigationItem title="Favorite Series" id="Epw-ls-r80">
-                                            <barButtonItem key="leftBarButtonItem" title="backbutton" id="d8R-0y-eKb">
+                                            <barButtonItem key="leftBarButtonItem" image="xmark.circle.fill" catalog="system" id="d8R-0y-eKb">
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="backButton:" destination="nbl-Ie-pXL" id="7FJ-Az-jJV"/>
@@ -334,9 +338,7 @@
     <resources>
         <image name="Ganime" width="903" height="644"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -345,6 +347,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

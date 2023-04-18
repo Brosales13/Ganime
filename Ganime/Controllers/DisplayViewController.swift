@@ -19,6 +19,8 @@ class DisplayViewController: UIViewController {
     private var navigationBar: UINavigationBar!
     private var customNavigationItem: UINavigationItem!
     
+
+    
     var dataManager = DataManager()
     var animeModel: AnimeModel?
     
@@ -72,7 +74,14 @@ class DisplayViewController: UIViewController {
                     print("Saved\t \(titleLabel.text)")
 
                     
+                } else {
+                    
+                    // pop-up must appear
+                    let alertController = UIAlertController(title: "Series Already Saved.", message: "This Series has already been saved to device storage.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Ok",style: .default))
+                    present(alertController, animated: true, completion: nil)
                 }
+            
             } catch {
                 print("Error saving context \(error)")
             }
