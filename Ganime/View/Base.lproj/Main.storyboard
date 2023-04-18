@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +13,7 @@
         <scene sceneID="1JW-x0-6hm">
             <objects>
                 <viewController storyboardIdentifier="display_controller" id="ebN-Tc-IJf" customClass="DisplayViewController" customModule="Ganime" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7y1-Or-RVq">
+                    <view key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7y1-Or-RVq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -118,7 +117,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b6n-NC-Eu5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" red="0.97215849160000001" green="0.97039943930000006" blue="0.94734257460000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Svf-MN-M1n" firstAttribute="leading" secondItem="7y1-Or-RVq" secondAttribute="leading" constant="143" id="3Dh-QM-rNl"/>
                             <constraint firstItem="NtQ-ia-Rp7" firstAttribute="top" secondItem="63S-jf-hy4" secondAttribute="bottom" constant="52" id="Af4-qX-cLc"/>
@@ -258,8 +256,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <items>
                                         <navigationItem title="Favorite Series" id="Epw-ls-r80">
-                                            <barButtonItem key="leftBarButtonItem" title="Item" id="d8R-0y-eKb">
-                                                <imageReference key="image" image="arrowshape.turn.up.backward.fill" catalog="system" symbolScale="medium" variableValue="1"/>
+                                            <barButtonItem key="leftBarButtonItem" title="backbutton" id="d8R-0y-eKb">
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="backButton:" destination="nbl-Ie-pXL" id="7FJ-Az-jJV"/>
@@ -336,7 +333,6 @@
     <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
     <resources>
         <image name="Ganime" width="903" height="644"/>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

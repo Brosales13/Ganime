@@ -16,6 +16,8 @@ class DisplayViewController: UIViewController {
     @IBOutlet weak var statusRating: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     var newImage: UIImage = UIImage(named: "Ganime")!
+    private var navigationBar: UINavigationBar!
+    private var customNavigationItem: UINavigationItem!
     
     var dataManager = DataManager()
     var animeModel: AnimeModel?
@@ -24,8 +26,25 @@ class DisplayViewController: UIViewController {
         self.animeModel = seriesInfo
     }
     
+    func setNavigationBar() {
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+        view.addSubview(navigationBar)
+        customNavigationItem = UINavigationItem()
+        customNavigationItem.title = "Ganime"
+        let leftBarButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill")!.withTintColor(.red), style: .done, target: self, action: #selector(done))
+        customNavigationItem.leftBarButtonItem = leftBarButton
+        navigationBar.items = [customNavigationItem]
+        self.view.addSubview(navigationBar)
+        
+    }
+    
+    @objc func done() {
+        dismiss(animated: true, completion: nil)
+        print("done")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigationBar()
         titleLabel.text = animeModel?.animeTitle
         synopsisLabel.text = animeModel?.synopsis
         ratingLabel.text = animeModel?.rating
@@ -36,22 +55,28 @@ class DisplayViewController: UIViewController {
             grabImage(url: url)
         }
     }
-    
+
     @IBAction func saveSeries(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let jpegImageData = newImage.jpegData(compressionQuality: 1.0)
-        let data = NSEntityDescription.insertNewObject(forEntityName: "Series", into: context)
-        data.setValue(titleLabel.text, forKey: "name")
-        data.setValue(jpegImageData, forKey: "image")
-        
         do {
-            try context.save()
-            print("Saved\t \(titleLabel.text)")
-        } catch {
-            print("Could not save. \(error)")
-        }
+                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                let request : NSFetchRequest<Series> = Series.fetchRequest()
+            request.predicate = NSPredicate(format: "name == %@", titleLabel.text!)
+                let numberOfRecords = try context.count(for: request)
+                if numberOfRecords == 0 {
+                    let jpegImageData = newImage.jpegData(compressionQuality: 1.0)
+                    let data = NSEntityDescription.insertNewObject(forEntityName: "Series", into: context)
+                    data.setValue(titleLabel.text, forKey: "name")
+                    data.setValue(jpegImageData, forKey: "image")
+                    
+                    try context.save()
+                    print("Saved\t \(titleLabel.text)")
+
+                    
+                }
+            } catch {
+                print("Error saving context \(error)")
+            }
+        
     }
 
     func grabImage(url: URL) {

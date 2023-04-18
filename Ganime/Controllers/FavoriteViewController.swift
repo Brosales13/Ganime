@@ -19,6 +19,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isModalInPresentation = true
         table.dataSource = self
         table.delegate = self
         
@@ -111,12 +112,5 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         models.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
-    
-    @IBAction func didTapSort() {
-        if table.isEditing {
-            table.isEditing = false
-        } else {
-            table.isEditing = true
-        }
-    }
+
 }
