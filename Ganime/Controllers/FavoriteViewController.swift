@@ -14,7 +14,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     var models: [NSManagedObject] = []
     let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
     
-    var dataManager = FavoriteViewDataManager()
+    var dataManager = DataManager()
     var animeModel: AnimeModel?
     
     override func viewDidLoad() {
@@ -100,7 +100,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
        return 100
     }

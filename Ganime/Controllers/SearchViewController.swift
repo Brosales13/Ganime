@@ -11,7 +11,6 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     
-    var animeTitle = ""
     var dataManager = DataManager()
     var animeModel: AnimeModel?
     
