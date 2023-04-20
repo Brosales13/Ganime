@@ -11,8 +11,3 @@ struct AnimeModel {
     let ageRating: String
     let animeImage: String
 }
-
-struct basicSeriesModel {
-    let name: String
-    let image: UIImage
-}

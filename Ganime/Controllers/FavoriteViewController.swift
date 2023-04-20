@@ -8,12 +8,12 @@
 import UIKit
 import CoreData
 
-class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataManagerDelegate {
+class FavoriteViewController: UIViewController, DataManagerDelegate {
     
     @IBOutlet var table: UITableView!
+    
     var models: [NSManagedObject] = []
     let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.newBackgroundContext()
-    
     var dataManager = DataManager()
     var animeModel: AnimeModel?
     
@@ -22,12 +22,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.isModalInPresentation = true
         table.dataSource = self
         table.delegate = self
+        dataManager.delegate = self
+        title = "Favorite Anime"
         
         fetchFavoriteSeries()
-        title = "Favorite Anime"
-        dataManager.delegate = self
-        
-        
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -61,8 +59,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     func didFailWithError(error: Error) {
         print(error)
     }
-    
-    
+}
+
+extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        tableView.deselectRow(at: indexPath, animated: true)
         let animeTitle = models[indexPath.row].value(forKey: "name") as! String
@@ -79,14 +78,13 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCellIdentifier") as? CustomCell {
             cell.configureCell(series: models[indexPath.row])
             return cell
-            }
-           return UITableViewCell()
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            
             let objectToRemove = self.models[indexPath.row]
             self.context.delete(objectToRemove)
             models.remove(at: indexPath.row)
