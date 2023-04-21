@@ -2,7 +2,7 @@
 //  FavoriteViewController.swift
 //  Ganime
 //
-//  Created by Brian Rosales on 4/13/23.
+// 
 //
 
 import UIKit

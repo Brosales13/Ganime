@@ -43,7 +43,6 @@ struct DataManager {
                     return
                 }
                 if let safeData = data {
-                    
                     if let animeUpdated = self.parseJSON(currentData: safeData) {
                         self.delegate?.didUpdateAnime(animeUpdated: animeUpdated)
                     }

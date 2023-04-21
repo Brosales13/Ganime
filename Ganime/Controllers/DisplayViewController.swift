@@ -24,6 +24,7 @@ class DisplayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isModalInPresentation = true
         self.setNavigationBar()
         titleLabel.text = animeModel?.animeTitle
         synopsisLabel.text = animeModel?.synopsis

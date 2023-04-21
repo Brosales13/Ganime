@@ -2,7 +2,7 @@
 //  CustomCell.swift
 //  Ganime
 //
-//  Created by Brian Rosales on 4/14/23.
+// 
 //
 
 import Foundation
